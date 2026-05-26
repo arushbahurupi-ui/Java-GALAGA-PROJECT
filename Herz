@@ -1,4 +1,4 @@
-public class Herz extends Sprite {  //Joas
+public class Herz extends Sprite {  
    public Herz(double x_1, int y_1) {
       super(x_1, y_1, SpriteLibrary.Test, 17);
       scale(0.13);
