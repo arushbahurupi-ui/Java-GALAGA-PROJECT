@@ -1,4 +1,4 @@
-class Explosion extends Sprite {  //Arush
+class Explosion extends Sprite {  
    Explosion(double startX, double startY, double scale) {
       super(startX, startY, SpriteLibrary.Test, 16); // Sprite initialisieren
       scale(scale);
