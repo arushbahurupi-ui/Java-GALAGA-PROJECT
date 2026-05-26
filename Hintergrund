@@ -1,0 +1,5 @@
+class Background extends Sprite {  //Joas
+   Background() {
+      super(50, 50, SpriteLibrary.Test, 12);
+   }
+}
