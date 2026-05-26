@@ -1,4 +1,4 @@
-class Gameoverscreen extends Sprite {  //Anian
+class Gameoverscreen extends Sprite {  
 
    Gameoverscreen() {
       super(245, 200, SpriteLibrary.Test, 15);
