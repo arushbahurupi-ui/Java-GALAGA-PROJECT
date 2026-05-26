@@ -1,0 +1,6 @@
+public class Gegner extends Sprite {  //Joas
+   public Gegner(double x_1, int y_1) {
+      super(x_1, y_1, SpriteLibrary.Test, 14);
+      scale(1.15);
+   }
+}
