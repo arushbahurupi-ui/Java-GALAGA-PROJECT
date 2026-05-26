@@ -1,0 +1,7 @@
+class GegnerLaser extends Sprite {  //Anian
+   GegnerLaser(double startX, double startY) {
+      super(startX, startY, SpriteLibrary.Space_Shooter_2, 11); // Sprite initialisieren
+      scale(0.67);
+      setAngle(-180);
+   }
+}
