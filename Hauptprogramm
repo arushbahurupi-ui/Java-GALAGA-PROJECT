@@ -1,0 +1,7 @@
+World world = new World(500, 360); 
+Background background = new Background();
+Spiel spiel = new Spiel();
+
+
+
+
