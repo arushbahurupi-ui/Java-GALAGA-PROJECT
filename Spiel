@@ -32,7 +32,7 @@
    Endboss endboss;
    Gameoverscreen gameoverscreen;
 
-   // ===================== Listen =====================  //Arush hat die Listen erstellt
+   // ===================== Listen =====================  
    ArrayList<Laser> laserListe = new ArrayList<>();
    ArrayList<GegnerLaser> enemylaserListe = new ArrayList<>();
    ArrayList<Gegner> enemyListe = new ArrayList<>();
@@ -40,7 +40,7 @@
    ArrayList<GegnerLaser> endbossLaserListe = new ArrayList<>();
 
 
-   // ===================== Konstruktor ===================== //Anian hat das Text Konzept entwickelt
+   // ===================== Konstruktor ===================== 
    Spiel() {
       raumschiff = new Raumschiff(253, 300);
       
@@ -56,7 +56,7 @@
    }
 
 
-   // ===================== Bewegung ===================== // Joas hat die Bewegung des Raumschiff
+   // ===================== Bewegung ===================== 
    void geheNachRechts() {
       raumschiff.setAngle(0);
       raumschiff.move(5, 0);
@@ -78,19 +78,19 @@
    }
 
 
-   // ===================== Schießen =====================  // Joas und Anian
+   // ===================== Schießen =====================  
    void schießen() {
-      Laser laser = new Laser(raumschiff.getCenterX(), raumschiff.getCenterY());  //Joas hat das Schießen entwickelt
+      Laser laser = new Laser(raumschiff.getCenterX(), raumschiff.getCenterY());  
       laserListe.add(laser);
    }
 
    void gegschießen(Gegner gegner) {
-      GegnerLaser gegnerlaser = new GegnerLaser(gegner.getCenterX(), gegner.getCenterY()); // Anian und Joas
+      GegnerLaser gegnerlaser = new GegnerLaser(gegner.getCenterX(), gegner.getCenterY()); 
       enemylaserListe.add(gegnerlaser);
    }
 
    void bossSchießen() {
-      GegnerLaser gegnerlaser = new GegnerLaser(endboss.getCenterX(), endboss.getCenterY());  //Arush hat das bossschießen geschrieben
+      GegnerLaser gegnerlaser = new GegnerLaser(endboss.getCenterX(), endboss.getCenterY());  
       GegnerLaser gegnerlaser1 = new GegnerLaser(endboss.getCenterX() + 40, endboss.getCenterY());
       GegnerLaser gegnerlaser2 = new GegnerLaser(endboss.getCenterX() - 40, endboss.getCenterY());
       GegnerLaser gegnerlaser3 = new GegnerLaser(endboss.getCenterX() + 80, endboss.getCenterY() - 20);
@@ -104,7 +104,7 @@
    }
 
 
-   // ===================== Spawning ===================== // Arush
+   // ===================== Spawning ===================== 
    void erstelleGegner() {
       for (double i = 0.5; i < 5; i++) {
          gegner = new Gegner(i * 100, 50);
@@ -134,7 +134,7 @@
    // ===================== Haupt-Loop =====================
    void act() {
 
-      // ----- Cooldowns ----- Arush
+      // ----- Cooldowns ----- 
       enemyspawncooldown -= 1;
       herzcooldown -= 1;
 
@@ -142,24 +142,24 @@
       if(enemyshootingcooldown > 0) enemyshootingcooldown -= 1;
       if(bossshootcooldown > 0) bossshootcooldown -= 1;
 
-      // ----- Spawning -----  Joas
+      // ----- Spawning -----  
       if(enemyspawncooldown == 0 && !boss_lebt) {
          erstelleGegner();
          enemyspawncooldown = 170;
       }
 
-      if(herzcooldown == 0 && !boss_lebt) { // Anian
+      if(herzcooldown == 0 && !boss_lebt) { 
          erstelleLeben();
          herzcooldown = 500;
       }
 
-      // ----- Boss schießen -----  Joas
+      // ----- Boss schießen -----  
       if(bossshootcooldown <= 0 && boss_lebt) {
          bossSchießen();
          bossshootcooldown = 10;
       }
 
-      // ----- Steuerung ----- Arush 
+      // ----- Steuerung -----  
       if(isKeyDown("w")) {
          geheNachOben();
       } else if(isKeyDown("s")) {
@@ -175,12 +175,12 @@
          shootingcooldown += 15;
       }
 
-      // ----- Bewegung Objekte -----  Arush und Joas
+      // ----- Bewegung Objekte -----  
       for (Herz herz : herzliste) {
          herz.move(0, 5); 
       }
 
-      for (Laser laser : laserListe) {  //Zusammen
+      for (Laser laser : laserListe) {  
          laser.move(0, -10);
 
          if(endboss != null && boss_lebt && laser.collidesWith(endboss)) {
@@ -207,7 +207,7 @@
          }
       }
 
-      // ----- Gegner schießen -----  Joas 
+      // ----- Gegner schießen -----   
       if(enemyshootingcooldown == 0 && enemyListe.size() > 0) {
          int index = Random.randint(0, enemyListe.size() - 1);
          gegner = enemyListe.get(index);
@@ -215,7 +215,7 @@
          enemyshootingcooldown += 20;
       }
 
-      // ----- Gegner Bewegung + Treffer -----  Anian und Arush
+      // ----- Gegner Bewegung + Treffer -----  
       for (Gegner gegner : enemyListe) {
          gegner.move(0, 0.75);
 
@@ -245,7 +245,7 @@
          }
       }
 
-      // ----- Treffer Spieler -----  Zusammen
+      // ----- Treffer Spieler -----  
       for (GegnerLaser gegnerlaser : enemylaserListe) {
          gegnerlaser.move(0, 10);
 
@@ -262,7 +262,7 @@
          }
       }
 
-      for (GegnerLaser gegnerlaser : endbossLaserListe) { //Anian
+      for (GegnerLaser gegnerlaser : endbossLaserListe) { 
          gegnerlaser.move(0, 10);
 
          if(gegnerlaser.collidesWith(raumschiff)) {
@@ -278,7 +278,7 @@
          }
       }
 
-      // ----- Game Over -----  Anian
+      // ----- Game Over -----  
       if(leben == 0) {
          SystemTools.clearScreen();
          gameoverscreen = new Gameoverscreen();
@@ -290,13 +290,13 @@
          System.exit(1);
       }
 
-      // ----- Bildschirmrand -----  Arush
+      // ----- Bildschirmrand -----  
       if(raumschiff.getCenterY() >= 365) raumschiff.moveTo(raumschiff.getCenterX(), 0);
       if(raumschiff.getCenterY() <= -10) raumschiff.moveTo(raumschiff.getCenterX(), 360);
       if(raumschiff.getCenterX() <= -10) raumschiff.moveTo(495, raumschiff.getCenterY());
       if(raumschiff.getCenterX() >= 500) raumschiff.moveTo(-10, raumschiff.getCenterY());
 
-      // ----- Herz einsammeln -----  Anian
+      // ----- Herz einsammeln -----  
       if(herz != null && !herz.isDestroyed() && raumschiff.collidesWith(herz)) {
          herzliste.remove(herz);
          herz.destroy();
@@ -309,7 +309,7 @@
          lebenText.setBorderColor("blue");
       }
 
-      // ----- Boss Logik ----- Arush 
+      // ----- Boss Logik -----  
       if(boss_health == 0 && boss_lebt) {
          endboss.destroy();
          boss_lebt = false; 
@@ -329,7 +329,7 @@
          boss_lebt = true; 
       }
 
-      // ----- Boss Bewegung -----  Joas
+      // ----- Boss Bewegung -----  
       if(boss_lebt && endboss.getCenterY() <= 65) endboss.move(4.5, 0.8);
       if(boss_lebt && endboss.getCenterY() >= 65 && endboss.getCenterY() <= 125) endboss.move(-4.5, 0.5);
       if(boss_lebt && endboss.getCenterY() >= 125 && endboss.getCenterY() <= 185) endboss.move(4.5, 0.5);
@@ -338,7 +338,7 @@
       if(boss_lebt && endboss.getCenterY() >= 305 && endboss.getCenterY() <= 325) endboss.move(-4.5, 0.5);
       if(boss_lebt && endboss.getCenterY() >= 325) endboss.moveTo(250, 16);
 
-      // ----- Win -----  Anian
+      // ----- Win -----  
       if(boss_health == 0 && punkte > endbossvariable && !boss_lebt) {
          SystemTools.clearScreen();
          gameoverscreen = new Gameoverscreen();
