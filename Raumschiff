@@ -1,4 +1,4 @@
-class Raumschiff extends Sprite { //Arush
+class Raumschiff extends Sprite { 
    Raumschiff(int x_1, int y_1) {
       super(x_1, y_1, SpriteLibrary.Test, 11);
    }
