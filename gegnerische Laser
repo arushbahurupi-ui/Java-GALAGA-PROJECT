@@ -1,4 +1,4 @@
-class GegnerLaser extends Sprite {  //Anian
+class GegnerLaser extends Sprite {  
    GegnerLaser(double startX, double startY) {
       super(startX, startY, SpriteLibrary.Space_Shooter_2, 11); // Sprite initialisieren
       scale(0.67);
