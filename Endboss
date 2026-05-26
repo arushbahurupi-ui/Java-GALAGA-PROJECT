@@ -1,0 +1,6 @@
+public class Endboss extends Sprite {  // Joas
+   public Endboss(double x_1, int y_1) {
+      super(x_1, y_1, SpriteLibrary.Test, 21);
+      scale(0.25);
+   }
+}
