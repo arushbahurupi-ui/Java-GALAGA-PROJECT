@@ -1,0 +1,7 @@
+class Gameoverscreen extends Sprite {  //Anian
+
+   Gameoverscreen() {
+      super(245, 200, SpriteLibrary.Test, 15);
+      scale(1);
+   }
+}
