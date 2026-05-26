@@ -1,0 +1,6 @@
+class Laser extends Sprite {  //Arush
+   Laser(double startX, double startY) {
+      super(startX, startY, SpriteLibrary.Test, 13); // Sprite initialisieren
+      scale(0.03);
+   }
+}
